@@ -11,9 +11,9 @@
         <button class="add-to-cart" @click="addToCart">Agregar al carrito</button>
       </div>
     </div>
-    <router-link :to="{ name: 'category-products', params: { categoryName: categoryName } }" class="back-link">
+    <!-- <router-link :to="{ name: 'category-products', params: { categoryName: categoryName } }" class="back-link">
       &larr; Volver a la categoría
-    </router-link>
+    </router-link> -->
   </div>
 </template>
 
