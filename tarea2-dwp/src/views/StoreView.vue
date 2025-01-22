@@ -1,16 +1,91 @@
 <template>
-    <div>
-      <h1>Bienvenido a la Página de TIENDA</h1>
-      <p>Esta es la página principal de mi aplicación.</p>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "StoreView",
-  };
-  </script>
-  
-  <style scoped>
-  
-  </style>
+  <div class="store-container">
+    <!-- Introducción general -->
+    <section class="introduction">
+      <p>
+        Descubre nuestras categorías de productos y encuentra lo que necesitas.
+        Ofrecemos una variedad de servicios para satisfacer todas tus
+        necesidades.
+      </p>
+    </section>
+
+    <!-- Categorías de productos -->
+    <section class="categories">
+      <div
+        v-for="(category, index) in categories"
+        :key="index"
+        class="category-card"
+      >
+        <h2>{{ category.name }}</h2>
+        <p>{{ category.description }}</p>
+        <router-link
+          :to="{ name: 'category-products', params: { categoryName: category.name } }"
+          class="view-products-link"
+        >
+          Ver productos
+        </router-link>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "StoreView",
+  data() {
+    return {
+      categories: [
+        {
+          name: "Electrónicos",
+          description: "Encuentra los últimos dispositivos y gadgets.",
+          image: "https://via.placeholder.com/200x150?text=Electrónicos",
+        },
+        {
+          name: "Hogar",
+          description: "Productos esenciales para tu casa.",
+          image: "https://via.placeholder.com/200x150?text=Hogar",
+        },
+        {
+          name: "Deportes",
+          description: "Todo para tus actividades deportivas.",
+          image: "https://via.placeholder.com/200x150?text=Deportes",
+        },
+        {
+          name: "Moda",
+          description: "Ropa y accesorios para todos los estilos.",
+          image: "https://via.placeholder.com/200x150?text=Moda",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+/* Categorías */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.view-products-link {
+  margin-top: 10px;
+  display: inline-block;
+  color: #42b983;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.view-products-link:hover {
+  text-decoration: underline;
+}
+</style>

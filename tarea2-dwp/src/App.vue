@@ -2,6 +2,7 @@
 import HomeView from './views/HomeView.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 </script>
 
 <template>
@@ -27,6 +28,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
             <li><router-link to="/about">Nosotros</router-link></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Contacto</a></li>
+            <li><router-link to="/cart">Mi Carrito
+              <i class="bi bi-cart"></i>
+            </router-link></li>
           </ul>
 
           <!-- Buscador -->
