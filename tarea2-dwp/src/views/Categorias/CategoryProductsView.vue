@@ -7,7 +7,7 @@
         :key="index"
         class="product-card"
       >
-        <img :src="product.image" :alt="product.name" />
+        <!-- <img :src="product.image" :alt="product.name" /> -->
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
         <router-link

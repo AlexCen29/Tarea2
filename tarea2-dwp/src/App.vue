@@ -12,7 +12,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
       <section class="header-content">
         <!-- Banner -->
         <div class="banner">
-          <h1>Mi Aplicación Vue</h1>
+          <h1>Electrónicos Jimenez</h1>
           <p>Un lugar donde encuentras todo lo que necesitas</p>
         </div>
 

@@ -1,5 +1,6 @@
 <template>
   <div class="product-details-container">
+    <Breadcrumbs :categoryName="categoryName" :productName="productName" />
     <h1>Detalles de {{ productName }}</h1>
     <div class="product-details-card">
       <img :src="product.image" :alt="product.name" />
@@ -17,16 +18,18 @@
 </template>
 
 <script>
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
+  components: { Breadcrumbs },
   name: "ProductDetailsView",
   props: ["categoryName", "productName"],
   data() {
     return {
       product: {
         name: this.productName,
-        description: "Esta es una descripción detallada del producto.",
-        price: 150.0, // Precio del producto
-        image: "https://via.placeholder.com/300",
+        description: "Commodo incididunt labore qui incididunt id proident cillum duis voluptate Lorem tempor sunt. Eiusmod excepteur amet aliquip culpa ea nulla laborum culpa labore do eu aute fugiat. Qui irure laborum incididunt nulla nulla. Consequat enim enim proident mollit duis cillum deserunt pariatur dolor fugiat in cillum incididunt. Consequat pariatur ex quis anim irure proident nostrud proident magna. Labore elit qui eiusmod elit enim aliqua do adipisicing ut cupidatat est et exercitation.",
+        price: 150.0, //precio del producto
+        image: "https://www.gamespot.com/a/uploads/screen_kubrick/1574/15747411/3756082-xbox-series-x-review-promothumb.jpg",
       },
     };
   },

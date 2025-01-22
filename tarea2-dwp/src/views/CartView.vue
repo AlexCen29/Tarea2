@@ -1,17 +1,18 @@
 <template>
   <div class="cart-container">
-    <h1>Carrito de compras</h1>
+    <h1>Carrito de Compras</h1>
     <div v-if="cart.length > 0">
-      <div v-for="(item, index) in cart" :key="index" class="cart-item">
-        <img :src="item.image" :alt="item.name" />
-        <div class="item-details">
+      <ul>
+        <li v-for="(item, index) in cart" :key="index">
+          <img :src="item.image" :alt="item.name" />
           <h2>{{ item.name }}</h2>
           <p>{{ item.description }}</p>
           <p><strong>Precio:</strong> ${{ item.price }}</p>
           <button @click="removeFromCart(index)">Eliminar</button>
-        </div>
-      </div>
-      <h2>Total: ${{ totalPrice }}</h2>
+        </li>
+      </ul>
+      <p><strong>Total:</strong> ${{ totalPrice }}</p>
+      <button @click="processPayment">Pagar</button>
     </div>
     <div v-else>
       <p>Tu carrito está vacío.</p>
@@ -24,19 +25,40 @@ export default {
   name: "CartView",
   data() {
     return {
-      cart: JSON.parse(localStorage.getItem("cart")) || [],
+      cart: [],
     };
   },
   computed: {
     totalPrice() {
-      return this.cart.reduce((total, item) => total + item.price, 0);
+      return this.cart.reduce((total, item) => total + item.price, 0).toFixed(2);
     },
   },
   methods: {
+    loadCart() {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        this.cart = JSON.parse(storedCart);
+      }
+    },
     removeFromCart(index) {
       this.cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
+    processPayment() {
+      // Aquí puedes agregar la lógica para procesar el pago
+      // Por ahora, simplemente mostraremos una alerta de confirmación
+      alert("Compra realizada con éxito.");
+
+      // Limpiar el carrito
+      this.cart = [];
+      localStorage.removeItem("cart");
+
+      // Redirigir al usuario a la página de la tienda o inicio
+      this.$router.push({ name: "store" });
+    },
+  },
+  mounted() {
+    this.loadCart();
   },
 };
 </script>
@@ -46,45 +68,39 @@ export default {
   padding: 20px;
 }
 
-.cart-item {
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
   display: flex;
   align-items: center;
   gap: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   background-color: #f9f9f9;
-  margin-bottom: 20px;
 }
 
-.cart-item img {
+li img {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.item-details h2 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.item-details p {
-  margin: 5px 0 0;
-  color: #555;
-}
-
-.item-details button {
-  margin-top: 10px;
+button {
   padding: 5px 10px;
-  background-color: #ff4d4d;
+  background-color: #42b983;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.item-details button:hover {
-  background-color: #ff1a1a;
+button:hover {
+  background-color: #369e6c;
 }
 </style>
