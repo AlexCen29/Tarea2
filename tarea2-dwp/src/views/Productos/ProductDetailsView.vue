@@ -17,32 +17,38 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Breadcrumbs from "@/components/Breadcrumbs.vue";
-export default {
-  components: { Breadcrumbs },
-  name: "ProductDetailsView",
-  props: ["categoryName", "productName"],
-  data() {
-    return {
-      product: {
-        name: this.productName,
-        description: "Commodo incididunt labore qui incididunt id proident cillum duis voluptate Lorem tempor sunt. Eiusmod excepteur amet aliquip culpa ea nulla laborum culpa labore do eu aute fugiat. Qui irure laborum incididunt nulla nulla. Consequat enim enim proident mollit duis cillum deserunt pariatur dolor fugiat in cillum incididunt. Consequat pariatur ex quis anim irure proident nostrud proident magna. Labore elit qui eiusmod elit enim aliqua do adipisicing ut cupidatat est et exercitation.",
-        price: 150.0, //precio del producto
-        image: "https://www.gamespot.com/a/uploads/screen_kubrick/1574/15747411/3756082-xbox-series-x-review-promothumb.jpg",
-      },
-    };
+
+defineProps({
+  categoryName: {
+    type: String,
+    required: true,
   },
-  methods: {
-    addToCart() {
-      // Obtener el carrito actual desde el almacenamiento local o inicializarlo
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(this.product); // Agregar el producto al carrito
-      localStorage.setItem("cart", JSON.stringify(cart)); // Guardar el carrito actualizado
-      alert(`${this.product.name} se agregó al carrito.`);
-    },
+  productName: {
+    type: String,
+    required: true,
   },
-};
+});
+
+import { ref } from "vue";
+
+
+const product = ref(
+  window.history.state || {
+    name: "Producto no encontrado",
+    description: "Descripción no disponible",
+    image: "https://via.placeholder.com/150",
+    price: 0
+  }
+);
+
+function addToCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(product.value);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${product.value.name} se agregó al carrito.`);
+}
 </script>
 
 <style scoped>

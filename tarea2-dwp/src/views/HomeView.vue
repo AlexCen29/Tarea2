@@ -1,11 +1,10 @@
 <template>
-  <div class="home-container">
-    <!-- Banners laterales -->
-    <aside class="side-banner left-banner">
-      <p>Publicidad 1</p>
+  <div class="home-container">    
+    <aside class="side-banner left-banner" id="banner1">
+      <<p>Publicidad 1</p>>
     </aside>
 
-    <!-- Carrusel principal (Bootstrap) -->
+    <!-- esto se hace con bustrap -->
     <section class="carousel-container">
       <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -52,8 +51,7 @@
       </div>
     </section>
 
-    <!-- Banners laterales -->
-    <aside class="side-banner right-banner">
+    <aside class="side-banner right-banner" id="banner2">
       <p>Publicidad 2</p>
     </aside>
   </div>
@@ -66,20 +64,18 @@ export default {
 </script>
 
 <style scoped>
-/* Contenedor principal */
 .home-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   padding: 20px;
+  flex-wrap: wrap; /* Permite que los elementos se reorganicen en pantallas pequeñas */
 }
 
-/* Banners laterales */
 .side-banner {
   width: 150px;
   height: 300px;
-  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,12 +93,11 @@ export default {
   margin-right: 10px;
 }
 
-/* Carrusel */
 .carousel-container {
   flex: 1;
   max-width: 800px;
-  height: 370px; /* Altura fija para el carrusel */
-  overflow: hidden; /* Asegura que las imágenes no se desborden */
+  height: 370px;
+  overflow: hidden;
 }
 
 .carousel-inner {
@@ -112,6 +107,44 @@ export default {
 .carousel-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Escala y recorta las imágenes para ajustarse al contenedor */
+  object-fit: cover;
+}
+
+/* Reglas responsivas */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column; /* Reorganiza los elementos verticalmente */
+    align-items: center;
+  }
+
+  .side-banner {
+    width: 100%;
+    height: auto; /* Permite que las banners sean más flexibles */
+  }
+
+  .carousel-container {
+    max-width: 100%;
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+
+  .carousel-image {
+    height: auto; /* Mantiene proporciones */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 300px; /* Ajusta la altura para pantallas muy pequeñas */
+  }
+}
+
+#banner1{
+  background-image: url('/public/anuncio1.jpg');
+  background-size: cover;
+}
+
+#banner2{
+  background-image: url('/public/anuncio2.jpg');
+  background-size: cover;
 }
 </style>

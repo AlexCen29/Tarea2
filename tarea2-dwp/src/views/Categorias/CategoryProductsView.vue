@@ -10,8 +10,16 @@
         <!-- <img :src="product.image" :alt="product.name" /> -->
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
+        <img :src="product.image" class="imagen">
         <router-link
-          :to="{ name: 'product-details', params: { categoryName: categoryName, productName: product.name } }"
+          :to="{ 
+            name: 'product-details', 
+            params: { 
+              categoryName: categoryName, 
+              productName: product.name 
+            }, 
+            state: product 
+          }"
           class="details-link"
         >
           Ver detalles
@@ -27,31 +35,29 @@ export default {
   props: ["categoryName"],
   data() {
     return {
-      // Productos organizados por categoría
       productsByCategory: {
         Electrónicos: [
-          { name: "XBOX Series X", description: "Consola de última generación", image: "https://via.placeholder.com/150",},
-          { name: "PlayStation 5", description: "Consola con juegos exclusivos", image: "https://via.placeholder.com/150" },
-          { name: "Switch 2", description: "La consola portátil definitiva", image: "https://via.placeholder.com/150" },
+          { name: "XBOX Series X", description: "Consola de última generación", image: "/images/xboxseriesx.jpg", price: 9999 },
+          { name: "PlayStation 5", description: "Consola con juegos exclusivos", image: "/images/playstation5.jpg", price: 9999 },
+          { name: "Switch 2", description: "La consola portátil definitiva", image: "/images/switch2.jpg", price: 9999 },
         ],
         Hogar: [
-          { name: "Aspiradora", description: "Limpia tu hogar fácilmente", image: "https://via.placeholder.com/150" },
-          { name: "Refrigerador", description: "Conserva tus alimentos", image: "https://via.placeholder.com/150" },
+          { name: "Aspiradora", description: "Limpia tu hogar fácilmente", image: "/images/aspiradora.jpg", price: 9999 },
+          { name: "Refrigerador", description: "Conserva tus alimentos", image: "/images/refrigerador.jpg", price: 9999 },
         ],
         Deportes: [
-          { name: "Balón de fútbol", description: "Ideal para entrenamientos", image: "https://via.placeholder.com/150" },
-          { name: "Bicicleta", description: "Perfecta para aventuras", image: "https://via.placeholder.com/150" },
+          { name: "Balón de fútbol", description: "Ideal para entrenamientos", image: "/images/fucho.jpg", price: 9999 },
+          { name: "Bicicleta", description: "Perfecta para aventuras", image: "/images/bicla.jpg", price: 9999 },
         ],
         Moda: [
-          { name: "Camisa", description: "Elegancia y comodidad", image: "https://via.placeholder.com/150" },
-          { name: "Zapatos", description: "Ideales para cualquier ocasión", image: "https://via.placeholder.com/150" },
+          { name: "Camisa", description: "Elegancia y comodidad", image: "/images/camisa.jpg", price: 9999 },
+          { name: "Zapatos", description: "Ideales para cualquier ocasión", image: "/images/zapatos.jpg", price: 9999 },
         ],
       },
     };
   },
   computed: {
     filteredProducts() {
-      // Filtrar los productos según la categoría seleccionada
       return this.productsByCategory[this.categoryName] || [];
     },
   },
@@ -83,5 +89,9 @@ export default {
 
 .details-link:hover {
   text-decoration: underline;
+}
+
+.imagen{
+  width: 100%;  
 }
 </style>

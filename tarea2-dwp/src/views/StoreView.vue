@@ -1,6 +1,7 @@
 <template>
   <div class="store-container">
-    <!-- Introducción general -->
+    <!-- introduccion -->
+     <!-- dónde va el slogan? -->
     <section class="introduction">
       <p>
         Descubre nuestras categorías de productos y encuentra lo que necesitas.
@@ -9,7 +10,6 @@
       </p>
     </section>
 
-    <!-- Categorías de productos -->
     <section class="categories">
       <div
         v-for="(category, index) in categories"
@@ -18,6 +18,7 @@
       >
         <h2>{{ category.name }}</h2>
         <p>{{ category.description }}</p>
+        <img :src="category.image" class="imagen">
         <router-link
           :to="{ name: 'category-products', params: { categoryName: category.name } }"
           class="view-products-link"
@@ -38,22 +39,22 @@ export default {
         {
           name: "Electrónicos",
           description: "Encuentra los últimos dispositivos y gadgets.",
-          image: "https://via.placeholder.com/200x150?text=Electrónicos",
+          image: "/public/electrodomesticos.jpg",
         },
         {
           name: "Hogar",
           description: "Productos esenciales para tu casa.",
-          image: "https://via.placeholder.com/200x150?text=Hogar",
+          image: "/public/electronicos.jpg",
         },
         {
           name: "Deportes",
           description: "Todo para tus actividades deportivas.",
-          image: "https://via.placeholder.com/200x150?text=Deportes",
+          image: "/public/deportes.jpg",
         },
         {
           name: "Moda",
           description: "Ropa y accesorios para todos los estilos.",
-          image: "https://via.placeholder.com/200x150?text=Moda",
+          image: "/public/moda.jpg",
         },
       ],
     };
@@ -62,7 +63,6 @@ export default {
 </script>
 
 <style scoped>
-/* Categorías */
 .categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -87,5 +87,10 @@ export default {
 
 .view-products-link:hover {
   text-decoration: underline;
+}
+
+.imagen{
+  width: 100%;
+  height: 40%;
 }
 </style>

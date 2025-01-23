@@ -45,16 +45,14 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     processPayment() {
-      // Aquí puedes agregar la lógica para procesar el pago
       // Por ahora, simplemente mostraremos una alerta de confirmación
       alert("Compra realizada con éxito.");
 
-      // Limpiar el carrito
       this.cart = [];
       localStorage.removeItem("cart");
-
-      // Redirigir al usuario a la página de la tienda o inicio
-      this.$router.push({ name: "store" });
+      
+      //this.$router.push({ name: "store" }); -who tf typed this?-
+      window.location.reload();
     },
   },
   mounted() {
