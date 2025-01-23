@@ -38,9 +38,14 @@
     padding: 10px 0;
     font-size: 14px;
     background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;    
   }
   
+a{
+  text-decoration: none;
+  color: #000;
+}
+
   .breadcrumbs ul {
     list-style: none;
     display: flex;
