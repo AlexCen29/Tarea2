@@ -68,12 +68,14 @@ const closeMenu = () => {
           <input type="text" v-model="searchQuery" placeholder="Buscar..." aria-label="Campo de búsqueda" @input="searchProducts" />
         </form>
         <div v-if="searchResults.length">
-          <ul>
-            <li v-for="product in searchResults" :key="product.name">
-              <img :src="product.image" :alt="product.name" />
-              <h3>{{ product.name }}</h3>
-              <p>{{ product.description }}</p>
-              <p>{{ product.price }}</p>
+          <ul class="search-results">
+            <li v-for="product in searchResults" :key="product.name" class="search-result-item">
+              <img :src="product.image" :alt="product.name" class="product-image" />
+              <div class="product-info">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>{{ product.price }}</p>
+              </div>
             </li>
           </ul>
         </div>
@@ -81,7 +83,7 @@ const closeMenu = () => {
           <p>No se encontraron productos.</p>
         </div>
       </div>
-    
+
     </div>
 
   </div>
@@ -133,8 +135,7 @@ const searchProducts = () => {
   }
   const query = searchQuery.value.toLowerCase();
   searchResults.value = products.value.filter(product => 
-    product.name.toLowerCase().includes(query) ||
-    product.description.toLowerCase().includes(query)
+    product.name.toLowerCase().includes(query)
   );
 };
 </script>
@@ -172,7 +173,41 @@ const searchProducts = () => {
 .close:focus {
   color: black;
   text-decoration: none;
-  cursor: pointer;}
+  cursor: pointer;
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.product-info p {
+  margin: 0;
+  font-size: 0.9em;
+}
 
 .layout {
   display: flex;
