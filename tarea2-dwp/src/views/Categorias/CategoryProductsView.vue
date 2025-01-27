@@ -2,26 +2,20 @@
   <div class="category-products-container">
     <h1>{{ categoryName }}</h1>
     <section class="products">
-      <div
-        v-for="(product, index) in filteredProducts"
-        :key="index"
-        class="product-card"
-      >
-        <!-- <img :src="product.image" :alt="product.name" /> -->
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <img :src="product.image" class="imagen">
-        <router-link
-          :to="{ 
-            name: 'product-details', 
-            params: { 
-              categoryName: categoryName, 
-              productName: product.name 
-            }, 
-            state: product 
-          }"
-          class="details-link"
-        >
+      <div v-for="(product, index) in filteredProducts" :key="index" class="product-card-container">
+        <div class="product-card">
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+          <img :src="product.image" class="imagen">
+        </div>
+        <router-link :to="{
+          name: 'product-details',
+          params: {
+            categoryName: categoryName,
+            productName: product.name
+          },
+          state: product
+        }" class="details-link">
           Ver detalles
         </router-link>
       </div>
@@ -91,7 +85,37 @@ export default {
   text-decoration: underline;
 }
 
-.imagen{
-  width: 100%;  
+.imagen {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #42b983;
+  font-weight: bold;
+  text-align: center;
+}
+
+.details-link:hover {
+  text-decoration: underline;
 }
 </style>

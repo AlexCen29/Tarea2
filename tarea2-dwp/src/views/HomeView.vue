@@ -10,21 +10,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="https://usbridge.com/wp-content/uploads/2018/06/Image-Akashi_Kaikyo_Bridge.jpg"
+              src="/publicy/deportes.jpg"
               class="carousel-image"
               alt="Slide 1"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="https://stardewvalleywiki.com/mediawiki/images/4/4a/Pierres_shop.png"
+              src="/publicy/electronicos.jpg"
               class="carousel-image"
               alt="Slide 2"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="https://www.shutterstock.com/image-vector/illustration-bridge-pixel-art-style-260nw-2117888624.jpg"
+              src="/publicy/electrodomesticos.jpg"
               class="carousel-image"
               alt="Slide 3"
             />
@@ -139,12 +139,12 @@ export default {
 }
 
 #banner1{
-  background-image: url('/public/anuncio1.jpg');
+  background-image: url('/anuncio1.jpg');
   background-size: cover;
 }
 
 #banner2{
-  background-image: url('/public/anuncio2.jpg');
+  background-image: url('/anuncio2.jpg');
   background-size: cover;
 }
 </style>

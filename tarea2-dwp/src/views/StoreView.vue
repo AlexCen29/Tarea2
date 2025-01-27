@@ -39,22 +39,22 @@ export default {
         {
           name: "Electrónicos",
           description: "Encuentra los últimos dispositivos y gadgets.",
-          image: "/public/electrodomesticos.jpg",
+          image: "/electrodomesticos.jpg",
         },
         {
           name: "Hogar",
           description: "Productos esenciales para tu casa.",
-          image: "/public/electronicos.jpg",
+          image: "/electronicos.jpg",
         },
         {
           name: "Deportes",
           description: "Todo para tus actividades deportivas.",
-          image: "/public/deportes.jpg",
+          image: "/deportes.jpg",
         },
         {
           name: "Moda",
           description: "Ropa y accesorios para todos los estilos.",
-          image: "/public/moda.jpg",
+          image: "/moda.jpg",
         },
       ],
     };
