@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import HomeView from './views/HomeView.vue';
+//import HomeView from './views/HomeView.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -22,7 +22,7 @@ const closeMenu = () => {
       <section class="header-content">
         
         <div class="banner">
-          <h1>Electrónica Jimenez</h1>
+          <h1>Artículos para el hogar Jimenez</h1>
           <p>Un lugar donde encuentras todo lo que necesitas</p>
         </div>
 
